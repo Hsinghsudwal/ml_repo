@@ -1,0 +1,26 @@
+[build-system]
+# This section tells build tools what is required to build your package.
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# Basic metadata
+name = "my-project"
+version = "0.0.1"
+description = "A brief description of my my project"
+readme = "README.md"
+# You can point to a file or include inline text for your license.
+license = { file = "LICENSE" }
+
+dynamic = ["dependencies"]
+
+
+[tool.setuptools.dynamic]
+dependencies = {file = "requirements.txt"}
+
+# Author information
+authors = [
+  { name = "Harinder Singh Sudwal", email = "sudwalh@gmail.com" }
+]
+
+
