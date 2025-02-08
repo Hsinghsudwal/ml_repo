@@ -1,5 +1,13 @@
-from setuptools import find_packages,setup
+from setuptools import find_packages, setup
 from typing import List
+
+
+__version__ = "0.0.1"
+
+REPO_NAME = "repo_name"
+AUTHOR_USER_NAME = "Harinder Singh Sudwal"
+SRC_REPO = "project_name"
+AUTHOR_EMAIL = "sudwalh@gmail.com"
 
 def get_requirements()->List[str]:
     
@@ -16,11 +24,19 @@ def get_requirements()->List[str]:
 
     return requirement_lst
 
+
 setup(
-    name="project",
-    version="0.0.1",
-    author="Harinder Singh Sudwal",
-    author_email="sudwalh@gmail.com",
+    name=SRC_REPO,
+    version=__version__,
+    author=AUTHOR_USER_NAME,
+    author_email=AUTHOR_EMAIL,
+    description='End to End Machine learning pipeline with MLOps tools',
+    url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
+    project_urls={
+        "Bug Tracker": f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}/issues",
+    },
     packages=find_packages(),
-    install_requires=get_requirements()
+    install_requires=get_requirements(),
+    license='MIT',
 )
+
