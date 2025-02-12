@@ -9,15 +9,16 @@ AUTHOR_USER_NAME = "Harinder Singh Sudwal"
 SRC_REPO = "project_name"
 AUTHOR_EMAIL = "sudwalh@gmail.com"
 
-def get_requirements()->List[str]:
-    
-    requirement_lst:List[str]=[]
+
+def get_requirements() -> List[str]:
+
+    requirement_lst: List[str] = []
     try:
-        with open('requirements.txt','r') as file:
-            lines=file.readlines()
+        with open("requirements.txt", "r") as file:
+            lines = file.readlines()
             for line in lines:
-                requirement=line.strip()
-                if requirement and requirement!= '-e .':
+                requirement = line.strip()
+                if requirement and requirement != "-e .":
                     requirement_lst.append(requirement)
     except FileNotFoundError:
         print("requirements.txt file not found")
@@ -30,13 +31,17 @@ setup(
     version=__version__,
     author=AUTHOR_USER_NAME,
     author_email=AUTHOR_EMAIL,
-    description='End to End Machine learning pipeline with MLOps tools',
+    description="End to End Machine learning pipeline with MLOps tools",
     url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
     project_urls={
         "Bug Tracker": f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}/issues",
     },
     packages=find_packages(),
     install_requires=get_requirements(),
-    license='MIT',
+    license="MIT",
+    entry_points={
+        "console_scripts": [
+            "run-pipeline=main:main",
+        ]
+    },
 )
-
